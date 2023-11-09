@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MovilApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MovilApp"
+    xmlns:vistas="clr-namespace:MovilApp.Vistas"
+    Shell.FlyoutBehavior="Disabled">
+
+    <ShellContent
+    Title="Home"
+    ContentTemplate="{DataTemplate vistas:CargaPage}"
+    Route="carga" />
+    
+    <ShellContent
+     Title="Ingreso"
+     ContentTemplate="{DataTemplate vistas:LoginPage}"
+     Route="LoginPage" />
+
+    <!--Main Page-->
+    <TabBar>
+        <Tab Title="Principal" Icon="house_door_fill.svg">
+            <ShellContent
+            Icon="house_door_fill.svg"
+    Title="Principal"
+    ContentTemplate="{DataTemplate vistas:HomePage}"
+    Route="home" />
+
+        </Tab>
+        
+        <Tab Title="Clientes" Icon="gear_fill.svg">
+            <ShellContent
+            Icon="house_door_fill.svg"
+    Title="Clientes"
+    ContentTemplate="{DataTemplate vistas:ClientesPage}"
+    Route="cliente" />
+        </Tab>
+        
+        <Tab Title="Salir" Icon="gear_fill.svg">
+            <ShellContent
+        Icon="house_door_fill.svg"
+    Title="Salir"
+    ContentTemplate="{DataTemplate vistas:LogoutPage}"
+    Route="salir" />
+        </Tab>
+    </TabBar>
+
+</Shell>
