@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MovilApp.Vistas.DetalleClientePage"
+             Shell.NavBarIsVisible="False"
+             Title="DetalleClientePage">
+    <VerticalStackLayout Padding="15">
+       
+
+        <Label Text="Nombre:"></Label>
+        <Entry x:Name="nombre" Margin="0,0,0,10"></Entry>
+        
+        <Label Text="Telefono:"></Label>
+        <Entry x:Name="telefono" Margin="0,0,0,10"></Entry>
+        
+        <Label Text="Contacto:"></Label>
+        <Entry x:Name="contacto" Margin="0,0,0,10"></Entry>
+
+        <Button x:Name="Actualizar" Text="Actualizar" Clicked="Actualizar_Clicked"></Button>
+
+        <Label x:Name="Mensaje" IsVisible="False"></Label>
+    </VerticalStackLayout>
+</ContentPage>

@@ -9,6 +9,7 @@ namespace MovilApp.IServicios
     public interface IGeneralAPI
     {
         public HttpClient GetHttpClient();
-        public string URL();
+        public string URL(string controller);
+        
     }
 }

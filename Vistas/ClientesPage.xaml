@@ -5,23 +5,32 @@
              Shell.NavBarIsVisible="False"
              Title="ClientesPage">
     <VerticalStackLayout>
-        <Label 
-            Text="CLIENTES"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" FontSize="20" />
+       
 
         <ActivityIndicator x:Name="carga" HeightRequest="30" Color="Blue" IsRunning="True" IsVisible="false">
             
         </ActivityIndicator>
+        <Grid RowDefinitions="Auto,Auto,*" RowSpacing="15" Margin="15">
+            <Button x:Name="Crear" Grid.Row="0" Text="Nuevo Cliente" Clicked="Crear_Clicked" ></Button>
+            <Label Grid.Row="1" Text="Lista de Clientes" FontSize="Subtitle"></Label>
 
-        <ListView x:Name="lvClientes">
-            <ListView.ItemTemplate>
-                <DataTemplate>                   
-                        <TextCell Text="{Binding Nombre}"
-                      Detail="{Binding Telefono}" />                
-                </DataTemplate>
-            </ListView.ItemTemplate>
-            
-        </ListView>
+            <ScrollView Grid.Row="2">
+                <ListView x:Name="lvClientes" SelectionMode="Single" ItemSelected="OnItemSelected"  SeparatorColor="Black" >
+                    <ListView.ItemTemplate >
+                        <DataTemplate >
+                            <TextCell TextColor="Black" Text="{Binding Nombre}"   
+                       Detail="{Binding Telefono}" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+                </ListView>
+
+            </ScrollView>
+
+        </Grid>
+
     </VerticalStackLayout>
+    
+ 
+    
 </ContentPage>

@@ -12,7 +12,7 @@ namespace MovilApp.Servicios
     {
 
         static readonly string direccionbase = "http://10.0.2.2:5000";
-        static readonly string _url = $"{direccionbase}/api/clientes/";
+        static readonly string _url = $"{direccionbase}/api/";
 
         public  HttpClient GetHttpClient()
         {
@@ -24,9 +24,9 @@ namespace MovilApp.Servicios
 
         }
 
-        public string URL()
+        public string URL(string controller)
         {
-            return _url;
+            return _url  + controller + "/" ;
         }
     }
 }
