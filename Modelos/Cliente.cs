@@ -7,7 +7,7 @@
 
         public string? Telefono { get; set; }
         public string? Contacto { get; set; }
-        public string ContactoDetallado { get { return $"{Contacto +"-"} {Telefono}"; } }
+        public string ContactoDetallado { get { return $"{Contacto +" - "} {Telefono}"; } }
 
     }
 }
