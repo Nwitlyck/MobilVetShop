@@ -11,5 +11,7 @@ namespace MovilApp.IServicios
     {
         public Task<List<Cliente>> ListaClientes();
         public Task<ResponseCliente> ActualizarCliente(Cliente cliente);
+
+        public Task<ResponseCliente> CrearCliente(Cliente cliente);
     }
 }

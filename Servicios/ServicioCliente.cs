@@ -32,6 +32,23 @@ namespace MovilApp.Servicios
 
         }
 
+        public async Task<ResponseCliente> CrearCliente(Cliente cliente)
+        {
+            var client = _generalAPI.GetHttpClient();
+
+            var mensaje = new HttpRequestMessage(HttpMethod.Post, _generalAPI.URL("clientes") + "crear");
+            mensaje.Content = JsonContent.Create<Cliente>(cliente);
+
+            var response = await client.SendAsync(mensaje);
+            response.EnsureSuccessStatusCode();
+
+            var clienteinsertado = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<ResponseCliente>(clienteinsertado);
+
+        }
+
+        
+
         public async Task<List<Cliente>> ListaClientes()
         {
             var client = _generalAPI.GetHttpClient();

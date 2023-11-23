@@ -12,6 +12,7 @@ namespace MovilApp
             Routing.RegisterRoute("cliente", typeof(ClientesPage));
             Routing.RegisterRoute("salir", typeof(LogoutPage));
             Routing.RegisterRoute("detallecliente", typeof(DetalleClientePage) );
+            Routing.RegisterRoute("crearcliente", typeof(CrearClientePage));
         }
     }
 }

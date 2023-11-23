@@ -25,9 +25,9 @@ public partial class ClientesPage : ContentPage
 		carga.IsVisible = false;
 	}
 
-    private void Crear_Clicked(object sender, EventArgs e)
+    private async void Crear_Clicked(object sender, EventArgs e)
     {
-
+        await Shell.Current.GoToAsync("/crearcliente");
     }
 
     void OnItemSelected(object sender, SelectedItemChangedEventArgs args)

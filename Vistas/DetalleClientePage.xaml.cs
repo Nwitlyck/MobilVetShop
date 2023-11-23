@@ -39,7 +39,7 @@ public partial class DetalleClientePage : ContentPage
         var responseCliente = await _servicioCliente.ActualizarCliente(cliente);
         if (responseCliente.errores.errorcode==0)
         {
-            await Shell.Current.GoToAsync("///cliente");
+            await Navigation.PushAsync(new ClientesPage(_servicioCliente));
         }
         else
         {

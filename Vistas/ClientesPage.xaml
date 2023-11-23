@@ -19,7 +19,7 @@
                     <ListView.ItemTemplate >
                         <DataTemplate >
                             <TextCell TextColor="Black" Text="{Binding Nombre}"   
-                       Detail="{Binding Telefono}" />
+                       Detail="{Binding ContactoDetallado}" />
                         </DataTemplate>
                     </ListView.ItemTemplate>
 
