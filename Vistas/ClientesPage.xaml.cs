@@ -27,8 +27,8 @@ public partial class ClientesPage : ContentPage
 
     private async void Crear_Clicked(object sender, EventArgs e)
     {
-		Cliente cliente = new Cliente();
-       await Navigation.PushAsync(new DetalleClientePage(cliente, _servicioCliente));
+		
+       await Navigation.PushAsync(new CrearClientePage(_servicioCliente));
     }
 
     void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
