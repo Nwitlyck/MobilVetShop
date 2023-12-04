@@ -4,33 +4,40 @@
              x:Class="MovilApp.Vistas.ClientesPage"
              Shell.NavBarIsVisible="False"
              Title="ClientesPage">
+
     <VerticalStackLayout>
-       
+        <ActivityIndicator x:Name="carga" HeightRequest="30" Color="Blue" IsRunning="True" IsVisible="false" VerticalOptions="Start" HorizontalOptions="CenterAndExpand"/>
 
-        <ActivityIndicator x:Name="carga" HeightRequest="30" Color="Blue" IsRunning="True" IsVisible="false">
-            
-        </ActivityIndicator>
-        <Grid RowDefinitions="Auto,Auto,*" RowSpacing="15" Margin="15">
-            <Button x:Name="Crear" Grid.Row="0" Text="Nuevo Cliente" Clicked="Crear_Clicked" ></Button>
-            <Label Grid.Row="1" Text="Lista de Clientes" FontSize="Subtitle"></Label>
+        <!--<Grid RowDefinitions="Auto,Auto,*" RowSpacing="15" Margin="15">-->
+            <Label Text="Citas Agendadas" FontSize="Title" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
 
-            <ScrollView Grid.Row="2">
-                <ListView x:Name="lvClientes" SelectionMode="Single" ItemSelected="OnItemSelected"  SeparatorColor="Black" >
-                    <ListView.ItemTemplate >
-                        <DataTemplate >
-                            <TextCell TextColor="Black" Text="{Binding Nombre}"   
-                       Detail="{Binding ContactoDetallado}" />
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
+            <!--<ScrollView Grid.Row="2">-->
+            <ListView x:Name="lvAppointments" SelectionMode="Single" ItemSelected="OnItemSelected" SeparatorColor="Black">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
 
-                </ListView>
+                                <Label
+                                    Text="{Binding CustomerName}"
+                                    FontAttributes="Bold" 
+                                    VerticalOptions="Start" />
+                                
+                                <Label 
+                                    Text="{Binding UserName}"
+                                    FontAttributes="Italic"
+                                    VerticalOptions="Center" />
 
-            </ScrollView>
-
-        </Grid>
-
+                                <Label
+                                    Text="{Binding State}"
+                                    FontAttributes="Italic"
+                                    VerticalOptions="End" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <!--</ScrollView>-->
+        <!--</Grid>-->
     </VerticalStackLayout>
-    
- 
-    
 </ContentPage>
