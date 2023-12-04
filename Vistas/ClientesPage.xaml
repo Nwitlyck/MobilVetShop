@@ -8,38 +8,36 @@
     <VerticalStackLayout>
         <ActivityIndicator x:Name="carga" HeightRequest="30" Color="Blue" IsRunning="True" IsVisible="false" VerticalOptions="Start" HorizontalOptions="CenterAndExpand"/>
 
-        <Grid RowDefinitions="Auto,Auto,*" RowSpacing="15" Margin="15">
-            <Label Grid.Row="0" Text="Citas Agendadas" FontSize="Title" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+        <!--<Grid RowDefinitions="Auto,Auto,*" RowSpacing="15" Margin="15">-->
+            <Label Text="Citas Agendadas" FontSize="Title" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
 
-            <ScrollView Grid.Row="1">
-                <ListView x:Name="lvClientes" SelectionMode="Single" ItemSelected="OnItemSelected" SeparatorColor="Black">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <!-- no se como se ve estooooo-->
-                                <Frame BackgroundColor="#E8E8E8" CornerRadius="10" Margin="10">
-                                    <StackLayout>
-                                        <Label Text="Cliente:" Style="{StaticResource LabelStyle}"/>
-                                        <Label TextColor="Black" Text="{Binding CustomerName}" FontAttributes="Bold"/>
-                                        <Label Text="Veterinario:" Style="{StaticResource LabelStyle}"/>
-                                        <Label TextColor="Black" Text="{Binding AsistantName}" />
-                                        <Label Text="Fecha y hora:" Style="{StaticResource LabelStyle}"/>
-                                        <Label TextColor="Black" Text="{Binding DateTime}" />
-                                        <Label Text="Provincia:" Style="{StaticResource LabelStyle}"/>
-                                        <Label TextColor="Black" Text="{Binding Province}" />
-                                        <Label Text="Estado:" Style="{StaticResource LabelStyle}"/>
-                                        <Label TextColor="Black" Text="{Binding State}" />
-    
-                                        <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
-                                            <Button Text="Detalles" Clicked="Crear_Clicked" BackgroundColor="#007BFF" TextColor="White" Margin="0,5,0,0"/>
-                                        </StackLayout>
-                                    </StackLayout>
-                                </Frame>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </ScrollView>
-        </Grid>
+            <!--<ScrollView Grid.Row="2">-->
+            <ListView x:Name="lvAppointments" SelectionMode="Single" ItemSelected="OnItemSelected" SeparatorColor="Black">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+
+                                <Label
+                                    Text="{Binding CustomerName}"
+                                    FontAttributes="Bold" 
+                                    VerticalOptions="Start" />
+                                
+                                <Label 
+                                    Text="{Binding UserName}"
+                                    FontAttributes="Italic"
+                                    VerticalOptions="Center" />
+
+                                <Label
+                                    Text="{Binding State}"
+                                    FontAttributes="Italic"
+                                    VerticalOptions="End" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <!--</ScrollView>-->
+        <!--</Grid>-->
     </VerticalStackLayout>
 </ContentPage>

@@ -1,4 +1,4 @@
-﻿using MovilApp.IServicios;
+﻿using MovilApp.IService;
 
 namespace MovilApp.Servicios
 {
