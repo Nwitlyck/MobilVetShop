@@ -4,33 +4,42 @@
              x:Class="MovilApp.Vistas.ClientesPage"
              Shell.NavBarIsVisible="False"
              Title="ClientesPage">
+
     <VerticalStackLayout>
-       
+        <ActivityIndicator x:Name="carga" HeightRequest="30" Color="Blue" IsRunning="True" IsVisible="false" VerticalOptions="Start" HorizontalOptions="CenterAndExpand"/>
 
-        <ActivityIndicator x:Name="carga" HeightRequest="30" Color="Blue" IsRunning="True" IsVisible="false">
-            
-        </ActivityIndicator>
         <Grid RowDefinitions="Auto,Auto,*" RowSpacing="15" Margin="15">
-            <Button x:Name="Crear" Grid.Row="0" Text="Nuevo Cliente" Clicked="Crear_Clicked" ></Button>
-            <Label Grid.Row="1" Text="Lista de Clientes" FontSize="Subtitle"></Label>
+            <Label Grid.Row="0" Text="Citas Agendadas" FontSize="Title" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
 
-            <ScrollView Grid.Row="2">
-                <ListView x:Name="lvClientes" SelectionMode="Single" ItemSelected="OnItemSelected"  SeparatorColor="Black" >
-                    <ListView.ItemTemplate >
-                        <DataTemplate >
-                            <TextCell TextColor="Black" Text="{Binding Nombre}"   
-                       Detail="{Binding ContactoDetallado}" />
+            <ScrollView Grid.Row="1">
+                <ListView x:Name="lvClientes" SelectionMode="Single" ItemSelected="OnItemSelected" SeparatorColor="Black">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <!-- no se como se ve estooooo-->
+                                <Frame BackgroundColor="#E8E8E8" CornerRadius="10" Margin="10">
+                                    <StackLayout>
+                                        <Label Text="Cliente:" Style="{StaticResource LabelStyle}"/>
+                                        <Label TextColor="Black" Text="{Binding CustomerName}" FontAttributes="Bold"/>
+                                        <Label Text="Veterinario:" Style="{StaticResource LabelStyle}"/>
+                                        <Label TextColor="Black" Text="{Binding AsistantName}" />
+                                        <Label Text="Fecha y hora:" Style="{StaticResource LabelStyle}"/>
+                                        <Label TextColor="Black" Text="{Binding DateTime}" />
+                                        <Label Text="Provincia:" Style="{StaticResource LabelStyle}"/>
+                                        <Label TextColor="Black" Text="{Binding Province}" />
+                                        <Label Text="Estado:" Style="{StaticResource LabelStyle}"/>
+                                        <Label TextColor="Black" Text="{Binding State}" />
+    
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                                            <Button Text="Detalles" Clicked="Crear_Clicked" BackgroundColor="#007BFF" TextColor="White" Margin="0,5,0,0"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Frame>
+                            </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
-
                 </ListView>
-
             </ScrollView>
-
         </Grid>
-
     </VerticalStackLayout>
-    
- 
-    
 </ContentPage>
