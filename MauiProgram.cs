@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
-using MovilApp.IServicios;
+using MovilApp.IService;
 using MovilApp.Servicios;
 using MovilApp.Vistas;
 
@@ -21,7 +21,7 @@ namespace MovilApp
             builder.Services.AddSingleton<ClientesPage>();
             builder.Services.AddSingleton<DetalleClientePage>();
             builder.Services.AddSingleton<IGeneralAPI, GeneralAPI>();
-            builder.Services.AddSingleton<IServicioCliente, ServicioCliente>();
+            //builder.Services.AddSingleton<IServicioCliente, ServicioCliente>();
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif

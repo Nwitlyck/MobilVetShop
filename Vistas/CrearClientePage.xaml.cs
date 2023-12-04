@@ -1,17 +1,17 @@
-using MovilApp.IServicios;
+/*using MovilApp.IServicios;
 using MovilApp.Modelos;
-
+*/
 namespace MovilApp.Vistas;
 
 public partial class CrearClientePage : ContentPage
 {
-    private readonly IServicioCliente _servicioCliente;
-    public CrearClientePage(IServicioCliente servicioCliente)
+    //private readonly IServicioCliente _servicioCliente;
+    public CrearClientePage(/*IServicioCliente servicioCliente*/)
 	{
 		InitializeComponent();
-        _servicioCliente = servicioCliente;
+        //_servicioCliente = servicioCliente;
 	}
-
+    /*
     async void InsertarCliente()
     {
         Cliente cliente = new Cliente()
@@ -32,8 +32,9 @@ public partial class CrearClientePage : ContentPage
             Mensaje.Text = "Error al crear el cliente";
         }
     }
+    */
     private void Crear_Clicked(object sender, EventArgs e)
     {
-        InsertarCliente();
+        //InsertarCliente();
     }
 }

@@ -1,14 +1,14 @@
 ﻿
-using MovilApp.IServicios;
-using MovilApp.Modelos;
+using MovilApp.IService;
 using Newtonsoft.Json;
 using System.Net.Http.Json;
 
 namespace MovilApp.Servicios
 {
 
-    public class ServicioCliente : IServicioCliente
+    public class ServicioCliente// : IServicioCliente
     {
+        /*
         private readonly IGeneralAPI _generalAPI;
 
         public ServicioCliente(IGeneralAPI generalAPI)
@@ -61,5 +61,6 @@ namespace MovilApp.Servicios
 
             return lista;
         }
+        */
     }
 }
