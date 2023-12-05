@@ -5,50 +5,60 @@ namespace MovilApp.Vistas;
 
 public partial class DetalleClientePage : ContentPage
 {
-//    private int id = 0;
-//    private readonly IServicioCliente _servicioCliente;
+    //    private int id = 0;
+    //    private readonly IServicioCliente _servicioCliente;\
+
+    public class Info
+    {
+        public string CustomerName { get; set; }
+        public string AsistantName { get; set; }
+        public DateTime DateTime { get; set; }
+        public string Address { get; set; }
+        public string Canton { get; set; }
+        public string Province { get; set; }
+        public string Description { get; set; }
+        public int State { get; set; }
+    }
 
     public DetalleClientePage(/*Cliente cliente, IServicioCliente servicioCliente*/)
 	{
 		InitializeComponent();
-        //_servicioCliente = servicioCliente;
-        //carga_datos(cliente);
+        cargainfo();
 			
 	}
 
-	//void carga_datos(Cliente cliente)
-	//{
-        
- //       nombre.Text = cliente.Nombre;
- //       telefono.Text = cliente.Telefono;
- //       contacto.Text = cliente.Contacto;
- //       id = cliente.Id;
-     
- //   }
-
- //   async void ActualizarCliente()
- //   {
- //       Cliente cliente = new Cliente()
- //       {
- //           Nombre = nombre.Text,
- //           Telefono = telefono.Text,
- //           Contacto = contacto.Text,
- //           Id = id
- //       };
-
- //       var responseCliente = await _servicioCliente.ActualizarCliente(cliente);
- //       if (responseCliente.errores.errorcode==0)
- //       {
- //           await Navigation.PushAsync(new ClientesPage(_servicioCliente));
- //       }
- //       else
- //       {
- //           Mensaje.IsVisible = true;
- //           Mensaje.Text = "Error al actualizar el cliente";
- //       }
- //   }
-    private void Actualizar_Clicked(object sender, EventArgs e)
+    async void cargainfo()
     {
-        //ActualizarCliente();
+        carga.IsVisible = true;
+
+        var listT = new List<Info>
+        {
+            new Info {
+                CustomerName = "Pedro",
+                AsistantName = "Test" ,
+                DateTime = DateTime.Now ,
+                Address = "Calle 9, casa 4e",
+                Canton = "Santa Ana",
+                Province = "San Jose",
+                Description ="Grooming",
+                State = 1},
+            new Info {
+                CustomerName = "Martin",
+                AsistantName = "Test",
+                Address = "Calle 9, casa 4e",
+                Canton = "Santa Ana",
+                Province = "Cartago",
+                Description ="Checkeo anual",
+                State = 1}
+        };
+
+        lvInfo.ItemsSource = listT;
+        carga.IsVisible = false;
+    }
+
+    
+    private async void Volver_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PopAsync();
     }
 }

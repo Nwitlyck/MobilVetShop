@@ -51,4 +51,10 @@ public partial class ClientesPage : ContentPage
 
         //Navigation.PushAsync(new DetalleClientePage(item, _servicioCliente));
     }
+
+    private async void OnInformacionClicked(object sender, EventArgs e)
+    {
+
+        await Navigation.PushAsync(new DetalleClientePage());
+    }
 }

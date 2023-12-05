@@ -15,9 +15,16 @@
         <ListView x:Name="lvAppointments" BackgroundColor="Transparent" SeparatorColor="Silver" RowHeight="80">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell
+                    <TextCell 
                         Text="{Binding CustomerName}"
                         Detail="{Binding DateTime}">
+                        <TextCell.ContextActions>
+                            <MenuItem Text="Informacion" Clicked="OnInformacionClicked"/>
+                            <MenuItem Text="Cita completada"></MenuItem>
+                            <MenuItem Text="Poner en espera"></MenuItem>
+                            <MenuItem Text="Cancelar cita"></MenuItem>
+
+                        </TextCell.ContextActions>
                     </TextCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
