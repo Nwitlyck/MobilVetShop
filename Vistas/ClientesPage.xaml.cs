@@ -22,13 +22,13 @@ public partial class ClientesPage : ContentPage
         var listAppoiments = new List<Appoiments> 
         { 
             new Appoiments { 
-                CustomerName = "A", 
+                CustomerName = "Pedro", 
                 UserName = "Test" , 
                 DateTime = DateTime.Now ,
                 Province = "A",
                 State = 1},
             new Appoiments {
-                CustomerName = "A",
+                CustomerName = "Martin",
                 UserName = "Test" ,
                 DateTime = DateTime.Now ,
                 Province = "A",

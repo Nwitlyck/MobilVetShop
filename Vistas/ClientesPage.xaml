@@ -5,39 +5,22 @@
              Shell.NavBarIsVisible="False"
              Title="ClientesPage">
 
-    <VerticalStackLayout>
-        <ActivityIndicator x:Name="carga" HeightRequest="30" Color="Blue" IsRunning="True" IsVisible="false" VerticalOptions="Start" HorizontalOptions="CenterAndExpand"/>
+    <StackLayout>
+        <StackLayout BackgroundColor="DarkBlue" Padding="10" HorizontalOptions="FillAndExpand">
+            <Label Text="Citas Agendadas" FontSize="Large" FontAttributes="Bold" TextColor="White" HorizontalOptions="CenterAndExpand"/>
+        </StackLayout>
 
-        <!--<Grid RowDefinitions="Auto,Auto,*" RowSpacing="15" Margin="15">-->
-            <Label Text="Citas Agendadas" FontSize="Title" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+        <ActivityIndicator x:Name="carga" HeightRequest="30" Color="Blue" IsRunning="True" IsVisible="false" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
 
-            <!--<ScrollView Grid.Row="2">-->
-            <ListView x:Name="lvAppointments" SelectionMode="Single" ItemSelected="OnItemSelected" SeparatorColor="Black">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Grid>
-
-                                <Label
-                                    Text="{Binding CustomerName}"
-                                    FontAttributes="Bold" 
-                                    VerticalOptions="Start" />
-                                
-                                <Label 
-                                    Text="{Binding UserName}"
-                                    FontAttributes="Italic"
-                                    VerticalOptions="Center" />
-
-                                <Label
-                                    Text="{Binding State}"
-                                    FontAttributes="Italic"
-                                    VerticalOptions="End" />
-                            </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            <!--</ScrollView>-->
-        <!--</Grid>-->
-    </VerticalStackLayout>
+        <ListView x:Name="lvAppointments" BackgroundColor="Transparent" SeparatorColor="Silver" RowHeight="80">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell
+                        Text="{Binding CustomerName}"
+                        Detail="{Binding DateTime}">
+                    </TextCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
 </ContentPage>
