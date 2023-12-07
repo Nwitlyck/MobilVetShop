@@ -20,9 +20,9 @@
                         Detail="{Binding DateTime}">
                         <TextCell.ContextActions>
                             <MenuItem Text="Informacion" Clicked="OnInformacionClicked"/>
-                            <MenuItem Text="Cita completada"></MenuItem>
-                            <MenuItem Text="Poner en espera"></MenuItem>
-                            <MenuItem Text="Cancelar cita"></MenuItem>
+                            <MenuItem Text="Cita completada" Clicked="OnCompleteClicked"></MenuItem>
+                            <MenuItem Text="Reagendar cita" Clicked="OnReagendarClicked"></MenuItem>
+                            <MenuItem Text="Cancelar cita" Clicked="OnCancelarClicked"></MenuItem>
 
                         </TextCell.ContextActions>
                     </TextCell>

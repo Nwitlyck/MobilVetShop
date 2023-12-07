@@ -5,56 +5,80 @@ namespace MovilApp.Vistas;
 
 public partial class ClientesPage : ContentPage
 {
-	//private readonly IServicioCliente _servicioCliente;
 
 
-	public ClientesPage(/*IServicioCliente servicioCliente*/)
-	{
+    public ClientesPage()
+    {
         InitializeComponent();
-        //_servicioCliente = servicioCliente;
-		cargaclientes();
-	}
+        cargaclientes();
 
-	async void cargaclientes()
-	{
-		carga.IsVisible = true;
+       
+    }
 
-        var listAppoiments = new List<Appoiments> 
-        { 
-            new Appoiments { 
-                CustomerName = "Pedro", 
-                UserName = "Test" , 
+    async void cargaclientes()
+    {
+        carga.IsVisible = true;
+
+        var listAppoiments = new List<Appoiments>
+        {
+            new Appoiments {
+                CustomerName = "Pedro",
+                AsistantName = "Test" ,
                 DateTime = DateTime.Now ,
-                Province = "A",
+                Address = "Calle 9, casa 4e",
+                Canton = "Santa Ana",
+                Province = "San Jose",
+                Description ="Grooming",
                 State = 1},
             new Appoiments {
                 CustomerName = "Martin",
-                UserName = "Test" ,
+                AsistantName = "Test",
                 DateTime = DateTime.Now ,
-                Province = "A",
+                Address = "Calle 9, casa 4e",
+                Canton = "Santa Ana",
+                Province = "Cartago",
+                Description ="Checkeo anual",
                 State = 1}
-        }; //await _servicioCliente.ListaClientes();
-
+        };
         lvAppointments.ItemsSource = listAppoiments;
-		carga.IsVisible = false;
-	}
-
-    private async void Crear_Clicked(object sender, EventArgs e)
-    {
-		
-       //await Navigation.PushAsync(new CrearClientePage(_servicioCliente));
+        carga.IsVisible = false;
     }
 
-    void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
-    {
-        //Appoiments item = args.SelectedItem as Appoiments;       
-
-        //Navigation.PushAsync(new DetalleClientePage(item, _servicioCliente));
-    }
 
     private async void OnInformacionClicked(object sender, EventArgs e)
     {
-
-        await Navigation.PushAsync(new DetalleClientePage());
+        if (sender is MenuItem menuItem && menuItem.BindingContext is Appoiments appoiment)
+        {
+            await Navigation.PushAsync(new DetalleClientePage(appoiment));
+        }
     }
+
+    private async void OnCompleteClicked(object sender, EventArgs e)
+    {
+
+
+        if (lvAppointments.SelectedItem is Appoiments appoiment)
+        {
+            await Navigation.PushAsync(new CompletePage(appoiment));
+        }
+    }
+    private async void OnReagendarClicked(object sender, EventArgs e)
+    {
+
+
+        if (lvAppointments.SelectedItem is Appoiments appoiment)
+        {
+            await Navigation.PushAsync(new ReagendarPage(appoiment));
+        }
+    }
+    private async void OnCancelarClicked(object sender, EventArgs e)
+    {
+
+
+        if (lvAppointments.SelectedItem is Appoiments appoiment)
+        {
+            await Navigation.PushAsync(new CancelPage(appoiment));
+        }
+    }
+
 }
