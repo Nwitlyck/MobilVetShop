@@ -4,20 +4,30 @@
              x:Class="MovilApp.Vistas.DetalleClientePage"
              Shell.NavBarIsVisible="False"
              Title="Detalle Cliente">
-    <VerticalStackLayout Padding="15">
-       
 
-        <Label Text="Nombre:"></Label>
-        <Entry x:Name="nombre" Margin="0,0,0,10"></Entry>
-        
-        <Label Text="Telefono:"></Label>
-        <Entry x:Name="telefono" Margin="0,0,0,10"></Entry>
-        
-        <Label Text="Contacto:"></Label>
-        <Entry x:Name="contacto" Margin="0,0,0,10"></Entry>
+    <StackLayout>
+        <StackLayout BackgroundColor="DarkBlue" Padding="10" HorizontalOptions="FillAndExpand">
+            <Label Text="Informacion de las citas" FontSize="Large" FontAttributes="Bold" TextColor="White" HorizontalOptions="CenterAndExpand"/>
+        </StackLayout>
 
-        <Button x:Name="Actualizar" Text="Actualizar" Clicked="Actualizar_Clicked"></Button>
-
-        <Label x:Name="Mensaje" IsVisible="False"></Label>
-    </VerticalStackLayout>
+        <ActivityIndicator x:Name="carga" HeightRequest="30" Color="Blue" IsRunning="True" IsVisible="false" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+        <ListView x:Name="lvInfo" BackgroundColor="Transparent" SeparatorColor="Silver" RowHeight="150">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="5" Spacing="0">
+                            <Label Text="{Binding CustomerName}" FontAttributes="Bold" TextColor="Black"/>
+                            <Label Text="{Binding AsistantName}" FontAttributes="Italic" />
+                            <Label Text="{Binding DateTime}" FontAttributes="Italic" />
+                            <Label Text="{Binding Address}" FontAttributes="Italic" />
+                            <Label Text="{Binding Canton}" FontAttributes="Italic" />
+                            <Label Text="{Binding Province}" FontAttributes="Italic" />
+                            <Label Text="{Binding Description}" FontAttributes="Italic" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Text="Volver" Clicked="Volver_Clicked" />
+    </StackLayout>
 </ContentPage>
