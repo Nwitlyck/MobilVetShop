@@ -1,4 +1,5 @@
 
+using MovilApp.IService;
 using MovilApp.Models;
 
 namespace MovilApp.Vistas;
@@ -6,20 +7,21 @@ namespace MovilApp.Vistas;
 public partial class ClientesPage : ContentPage
 {
 
+    private readonly IServiceAppointment _serviceAppointment;
 
-    public ClientesPage()
+    public ClientesPage(IServiceAppointment serviceAppointment/*, int vetId*/)
     {
         InitializeComponent();
-        cargaclientes();
-
-       
+        var vetId = 2;
+        _serviceAppointment = serviceAppointment;
+        cargaclientes(vetId);
     }
 
-    async void cargaclientes()
+    async void cargaclientes(int vetId)
     {
         carga.IsVisible = true;
 
-        var listAppoiments = new List<Appoiments>
+        var listAppoiments = await _serviceAppointment.ListAppointments(vetId);/*new List<Appoiments>
         {
             new Appoiments {
                 CustomerName = "Pedro",
@@ -39,7 +41,7 @@ public partial class ClientesPage : ContentPage
                 Province = "Cartago",
                 Description ="Checkeo anual",
                 State = 1}
-        };
+        };*/
         lvAppointments.ItemsSource = listAppoiments;
         carga.IsVisible = false;
     }
