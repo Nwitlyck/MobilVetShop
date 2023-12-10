@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace MovilApp.IService
 {
     public interface IServiceAppointment    {
-        public Task<List<Appoiments>> ListAppointments();
+        public Task<List<Appoiments>> ListAppointments(int vetId);
         public Task<ResponseAppointmentsUpdate> UpdateAppointment(Appoiments appoiments);
     }
 }
