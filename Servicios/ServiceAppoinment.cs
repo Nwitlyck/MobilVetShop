@@ -17,7 +17,7 @@ namespace MovilApp.Servicios
         {
             _generalAPI = generalAPI;
         }
-        public async Task<List<Appoiments>> ListAppointments(int vetId)
+        public async Task<List<Appoiments>> ListAppointments(string vetId)
         {
             var client = _generalAPI.GetHttpClient();
             string result = await client.GetStringAsync(_generalAPI.URL("Appointments") + "List/?userId=" + vetId);
