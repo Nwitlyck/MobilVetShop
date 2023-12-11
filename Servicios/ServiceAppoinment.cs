@@ -20,7 +20,7 @@ namespace MovilApp.Servicios
         public async Task<List<Appoiments>> ListAppointments(string vetId)
         {
             var client = _generalAPI.GetHttpClient();
-            string result = await client.GetStringAsync(_generalAPI.URL("Appointments") + "List/?userId=" + vetId);
+            string result = await client.GetStringAsync(_generalAPI.URL("Appointments") + "List/?useremail=" + vetId);
             var response = JsonConvert.DeserializeObject<ResponseListAppointments>(result);
             return response.Appointmets.ToList();
         }

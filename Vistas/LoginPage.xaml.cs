@@ -1,20 +1,18 @@
 using MovilApp.IService;
+using MovilApp.Servicios;
 
 namespace MovilApp.Vistas;
 
 public partial class LoginPage : ContentPage
 {
-    private readonly IServiceUsers _serviceUser;
-    public LoginPage(IServiceUsers serviceUser)
+    public LoginPage()
 	{
 		InitializeComponent();
-        _serviceUser = serviceUser;
-
     }
 
     private async void LoginButton_Clicked(object sender, EventArgs e)
     {
-        var verify = await _serviceUser.Verify(usuario.Text, contrasena.Text);
+        var verify = await new ServiceUser(new GeneralAPI()).Verify(usuario.Text, contrasena.Text);
 
         if (verify.Flag)
         {

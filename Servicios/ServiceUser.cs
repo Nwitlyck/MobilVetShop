@@ -26,15 +26,14 @@ namespace MovilApp.Servicios
         {
             var client = _generalAPI.GetHttpClient();
 
-            var mensaje = new HttpRequestMessage(HttpMethod.Post, _generalAPI.URL("User") + "Verify");
-            mensaje.Content = JsonContent.Create<string>(email);
-            mensaje.Content = JsonContent.Create<string>(password);
-            var response = await client.SendAsync(mensaje);
-            response.EnsureSuccessStatusCode();
+            string result = await client.GetStringAsync(_generalAPI.URL("User") + "Verify?email=" + email + "&password=" + password);
+            var response = JsonConvert.DeserializeObject<ResponseVerify>(result);
+            //var response = await client.SendAsync(mensaje);
+            //response.EnsureSuccessStatusCode();
 
-            var verification = await response.Content.ReadAsStringAsync();
+            //var verification = await response.Content.ReadAsStringAsync();
 
-            return JsonConvert.DeserializeObject<ResponseVerify>(verification);
+            return response;//JsonConvert.DeserializeObject<ResponseVerify>(verification);
 
         }
     }
