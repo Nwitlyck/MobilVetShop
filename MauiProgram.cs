@@ -22,6 +22,7 @@ namespace MovilApp
             builder.Services.AddSingleton<DetalleClientePage>();
             builder.Services.AddSingleton<IGeneralAPI, GeneralAPI>();
             builder.Services.AddSingleton<IServiceAppointment, ServiceAppoinment>();
+            builder.Services.AddSingleton<IServiceUsers, ServiceUser>();
             //builder.Services.AddSingleton<IServicioCliente, ServicioCliente>();
 #if DEBUG
             builder.Logging.AddDebug();

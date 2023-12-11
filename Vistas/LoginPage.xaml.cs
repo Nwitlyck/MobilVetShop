@@ -1,17 +1,24 @@
+using MovilApp.IService;
+
 namespace MovilApp.Vistas;
 
 public partial class LoginPage : ContentPage
 {
-	public LoginPage()
+    private readonly IServiceUsers _serviceUser;
+    public LoginPage(IServiceUsers serviceUser)
 	{
 		InitializeComponent();
-	}
+        _serviceUser = serviceUser;
+
+    }
 
     private async void LoginButton_Clicked(object sender, EventArgs e)
     {
-        if (usuario.Text.Equals("admin") && contrasena.Text.Equals("123"))
+        var verify = await _serviceUser.Verify(usuario.Text, contrasena.Text);
+
+        if (verify.Flag)
         {
-            await SecureStorage.SetAsync("sesion", "2");
+            await SecureStorage.SetAsync("sesion", usuario.Text);
             await Shell.Current.GoToAsync("///home");
         }
         else
