@@ -9,39 +9,19 @@ public partial class ClientesPage : ContentPage
 
     private readonly IServiceAppointment _serviceAppointment;
 
-    public ClientesPage(IServiceAppointment serviceAppointment/*, int vetId*/)
+    public ClientesPage(IServiceAppointment serviceAppointment)
     {
         InitializeComponent();
-        var vetId = 2;
         _serviceAppointment = serviceAppointment;
-        cargaclientes(vetId);
+        cargaclientes();
     }
 
-    async void cargaclientes(int vetId)
+    async void cargaclientes()
     {
         carga.IsVisible = true;
 
-        var listAppoiments = await _serviceAppointment.ListAppointments(vetId);/*new List<Appoiments>
-        {
-            new Appoiments {
-                CustomerName = "Pedro",
-                AsistantName = "Test" ,
-                DateTime = DateTime.Now ,
-                Address = "Calle 9, casa 4e",
-                Canton = "Santa Ana",
-                Province = "San Jose",
-                Description ="Grooming",
-                State = 1},
-            new Appoiments {
-                CustomerName = "Martin",
-                AsistantName = "Test",
-                DateTime = DateTime.Now ,
-                Address = "Calle 9, casa 4e",
-                Canton = "Santa Ana",
-                Province = "Cartago",
-                Description ="Checkeo anual",
-                State = 1}
-        };*/
+        var vetId = await SecureStorage.GetAsync("sesion");
+        var listAppoiments = await _serviceAppointment.ListAppointments(vetId);
         lvAppointments.ItemsSource = listAppoiments;
         carga.IsVisible = false;
     }

@@ -11,7 +11,7 @@ public partial class LoginPage : ContentPage
     {
         if (usuario.Text.Equals("admin") && contrasena.Text.Equals("123"))
         {
-            await SecureStorage.SetAsync("sesion", "true");
+            await SecureStorage.SetAsync("sesion", "2");
             await Shell.Current.GoToAsync("///home");
         }
         else
