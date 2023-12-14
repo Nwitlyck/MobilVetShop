@@ -20,8 +20,8 @@ public partial class ClientesPage : ContentPage
     {
         carga.IsVisible = true;
 
-        var vetId = await SecureStorage.GetAsync("sesion");
-        var listAppoiments = await _serviceAppointment.ListAppointments(vetId);
+        var vetEmail = await SecureStorage.GetAsync("sesion");
+        var listAppoiments = await _serviceAppointment.ListAppointments(vetEmail);
         lvAppointments.ItemsSource = listAppoiments;
         carga.IsVisible = false;
     }

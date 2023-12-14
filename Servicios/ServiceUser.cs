@@ -18,22 +18,28 @@ namespace MovilApp.Servicios
         {
             _generalAPI = generalAPI;
         }
-        public Task<Users> GetUsers()
-        {
-            throw new NotImplementedException();
-        }
-        public async Task<ResponseVerify> Verify(string email, string password)
+        public async Task<Users> GetUsers(string email)
         {
             var client = _generalAPI.GetHttpClient();
 
-            string result = await client.GetStringAsync(_generalAPI.URL("User") + "Verify?email=" + email + "&password=" + password);
-            var response = JsonConvert.DeserializeObject<ResponseVerify>(result);
-            //var response = await client.SendAsync(mensaje);
-            //response.EnsureSuccessStatusCode();
+            string result = await client.GetStringAsync(_generalAPI.URL("User") + "Select?email=" + email);
+            var response = JsonConvert.DeserializeObject<ResponseUsers>(result);
 
-            //var verification = await response.Content.ReadAsStringAsync();
+            return response.User;
+        }
+        public async Task<ResponseVerify> Verify(LogIn logIn)
+        {
+            var client = _generalAPI.GetHttpClient();
 
-            return response;//JsonConvert.DeserializeObject<ResponseVerify>(verification);
+            var mensage = new HttpRequestMessage(HttpMethod.Post, _generalAPI.URL("User") + "Verify");
+            mensage.Content = JsonContent.Create<LogIn>(logIn);
+            var response = await client.SendAsync(mensage);
+
+            response.EnsureSuccessStatusCode();
+
+            var verifyLogIn = await response.Content.ReadAsStringAsync();
+
+            return JsonConvert.DeserializeObject<ResponseVerify>(verifyLogIn);
 
         }
     }

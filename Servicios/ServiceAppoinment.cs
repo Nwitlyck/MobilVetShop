@@ -25,9 +25,19 @@ namespace MovilApp.Servicios
             return response.Appointmets.ToList();
         }
 
-        public Task<ResponseAppointmentsUpdate> UpdateAppointment(Appoiments appoiments)
+        public async Task<ResponseAppointmentsUpdate> UpdateAppointment(AppoinmentUpdate appoinmentUpdate)
         {
-            throw new NotImplementedException();
+            var client = _generalAPI.GetHttpClient();
+
+            var mensage = new HttpRequestMessage(HttpMethod.Put, _generalAPI.URL("Appointments") + "Update");
+            mensage.Content = JsonContent.Create<AppoinmentUpdate>(appoinmentUpdate);
+            var response = await client.SendAsync(mensage);
+
+            response.EnsureSuccessStatusCode();
+
+            var updatedApoinment = await response.Content.ReadAsStringAsync();
+
+            return JsonConvert.DeserializeObject<ResponseAppointmentsUpdate>(updatedApoinment);
         }
     }
 }

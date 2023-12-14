@@ -9,6 +9,6 @@ namespace MovilApp.IService
 {
     public interface IServiceAppointment    {
         public Task<List<Appoiments>> ListAppointments(string vetId);
-        public Task<ResponseAppointmentsUpdate> UpdateAppointment(Appoiments appoiments);
+        public Task<ResponseAppointmentsUpdate> UpdateAppointment(AppoinmentUpdate appoinmentUpdate);
     }
 }
