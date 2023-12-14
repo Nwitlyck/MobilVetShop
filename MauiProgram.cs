@@ -20,9 +20,14 @@ namespace MovilApp
                 });
             builder.Services.AddSingleton<ClientesPage>();
             builder.Services.AddSingleton<DetalleClientePage>();
+            //builder.Services.AddSingleton<CompletePage>();
+            //builder.Services.AddSingleton<ReagendarPage>();
+            //builder.Services.AddSingleton<CancelPage>();
+            builder.Services.AddSingleton<LoginPage>();
+            builder.Services.AddSingleton<HomePage>();
             builder.Services.AddSingleton<IGeneralAPI, GeneralAPI>();
             builder.Services.AddSingleton<IServiceAppointment, ServiceAppoinment>();
-            //builder.Services.AddSingleton<IServicioCliente, ServicioCliente>();
+            builder.Services.AddSingleton<IServiceUsers, ServiceUser>();
 #if DEBUG
             builder.Logging.AddDebug();
 #endif

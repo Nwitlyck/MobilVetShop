@@ -20,14 +20,24 @@ namespace MovilApp.Servicios
         public async Task<List<Appoiments>> ListAppointments(string vetId)
         {
             var client = _generalAPI.GetHttpClient();
-            string result = await client.GetStringAsync(_generalAPI.URL("Appointments") + "List/?userId=" + vetId);
+            string result = await client.GetStringAsync(_generalAPI.URL("Appointments") + "List/?useremail=" + vetId);
             var response = JsonConvert.DeserializeObject<ResponseListAppointments>(result);
             return response.Appointmets.ToList();
         }
 
-        public Task<ResponseAppointmentsUpdate> UpdateAppointment(Appoiments appoiments)
+        public async Task<ResponseAppointmentsUpdate> UpdateAppointment(AppoinmentUpdate appoinmentUpdate)
         {
-            throw new NotImplementedException();
+            var client = _generalAPI.GetHttpClient();
+
+            var mensage = new HttpRequestMessage(HttpMethod.Put, _generalAPI.URL("Appointments") + "Update");
+            mensage.Content = JsonContent.Create<AppoinmentUpdate>(appoinmentUpdate);
+            var response = await client.SendAsync(mensage);
+
+            response.EnsureSuccessStatusCode();
+
+            var updatedApoinment = await response.Content.ReadAsStringAsync();
+
+            return JsonConvert.DeserializeObject<ResponseAppointmentsUpdate>(updatedApoinment);
         }
     }
 }

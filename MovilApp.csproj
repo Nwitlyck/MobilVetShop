@@ -73,9 +73,6 @@
 	  <MauiXaml Update="Vistas\CompletePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Vistas\CrearClientePage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="Vistas\DetalleClientePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
