@@ -41,7 +41,7 @@ public partial class ClientesPage : ContentPage
 
         if (lvAppointments.SelectedItem is Appoiments appoiment)
         {
-            await Navigation.PushAsync(new CompletePage(appoiment));
+            await Navigation.PushAsync(new CompletePage(_serviceAppointment, appoiment));
         }
     }
     private async void OnReagendarClicked(object sender, EventArgs e)
@@ -50,7 +50,7 @@ public partial class ClientesPage : ContentPage
 
         if (lvAppointments.SelectedItem is Appoiments appoiment)
         {
-            await Navigation.PushAsync(new ReagendarPage(appoiment));
+            await Navigation.PushAsync(new ReagendarPage(_serviceAppointment, appoiment));
         }
     }
     private async void OnCancelarClicked(object sender, EventArgs e)
@@ -59,7 +59,7 @@ public partial class ClientesPage : ContentPage
 
         if (lvAppointments.SelectedItem is Appoiments appoiment)
         {
-            await Navigation.PushAsync(new CancelPage(appoiment));
+            await Navigation.PushAsync(new CancelPage(_serviceAppointment, appoiment));
         }
     }
 
