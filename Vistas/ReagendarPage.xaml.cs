@@ -8,11 +8,11 @@ public partial class ReagendarPage : ContentPage
 {
     private readonly Appoiments _appoiment;
     private readonly IServiceAppointment _serviceAppointments;
-    public ReagendarPage(Appoiments appoiment)
-	{
-		InitializeComponent();
-        _serviceAppointments = new ServiceAppoinment(new GeneralAPI())/*serviceAppointment*/;
-        this._appoiment = appoiment;
+    public ReagendarPage(IServiceAppointment serviceAppointment, Appoiments appoiment)
+    {
+        InitializeComponent();
+        _serviceAppointments = serviceAppointment;
+        _appoiment = appoiment;
     }
 
     private async void OnEnviarClicked(object sender, EventArgs e)
@@ -26,9 +26,7 @@ public partial class ReagendarPage : ContentPage
 
         await DisplayAlert("Solicitud dereagendar exitosa", "La cita se mandado a la lista de reagendar de forma correcta", "OK");
 
-        _appoiment.IsCompleted = true;
-
-        await Navigation.PopAsync();
+        await Navigation.PushAsync(new ClientesPage(_serviceAppointments));
         
     }
 }
