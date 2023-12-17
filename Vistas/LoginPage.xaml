@@ -6,18 +6,16 @@
              Title="LoginPage">
     <!--<Grid RowDefinitions="2*,*" Margin="0,10,0,0">-->
     <VerticalStackLayout Padding="10" VerticalOptions="Center" HorizontalOptions="Center">
-        <Frame BorderColor="Black"
-        CornerRadius="10"
-        HasShadow="True"
+        <Border 
         Margin="0,20,0,0"
         ZIndex="0"
         Padding="8">
-            <Frame.Shadow>
+            <Border.Shadow>
                 <Shadow Brush="Black"
          Offset="20,20"
          Radius="10">
                 </Shadow>
-            </Frame.Shadow>
+            </Border.Shadow>
             <StackLayout     Padding="10">
                 <VerticalStackLayout Padding="10" BackgroundColor="{StaticResource White}">
                     <Label Text="Bienvenido"
@@ -35,19 +33,19 @@
 
                 <VerticalStackLayout Padding="10">
                     <Label FontFamily="Consolas" Text="Usuario:"/>
-                    <Frame CornerRadius="10" Padding="3" Margin="0,10,0,0" BorderColor="Black">
+                    <Border  Padding="3" Margin="0,10,0,0" >
                         <VerticalStackLayout>
                             <Entry x:Name="usuario"  Margin="5,0,0,0" Placeholder="Usuario" FontSize="14" >
                             </Entry>
                         </VerticalStackLayout>
-                    </Frame>
+                    </Border>
                     <VerticalStackLayout Padding="0" Margin="0,5,0,0">
                         <Label FontFamily="Consolas" Text="Contraseña:"/>
-                        <Frame CornerRadius="10" Padding="3" Margin="0,10,0,0" BorderColor="Black">
+                        <Border Padding="3" Margin="0,10,0,0" >
                             <Entry x:Name="contrasena"  Margin="5,0,0,0" Placeholder="Contraseña"
                             IsPassword="True" FontSize="14">
                             </Entry>
-                        </Frame>
+                        </Border>
                     </VerticalStackLayout>
 
 
@@ -61,7 +59,7 @@
 
                 </VerticalStackLayout>
             </StackLayout>
-        </Frame>
+        </Border>
     </VerticalStackLayout>
     <!--</Grid>-->
 </ContentPage>

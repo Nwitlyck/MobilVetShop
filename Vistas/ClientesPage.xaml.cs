@@ -1,4 +1,5 @@
 
+using MovilApp.IService;
 using MovilApp.Models;
 
 namespace MovilApp.Vistas;
@@ -6,40 +7,21 @@ namespace MovilApp.Vistas;
 public partial class ClientesPage : ContentPage
 {
 
+    private readonly IServiceAppointment _serviceAppointment;
 
-    public ClientesPage()
+    public ClientesPage(IServiceAppointment serviceAppointment)
     {
         InitializeComponent();
+        _serviceAppointment = serviceAppointment;
         cargaclientes();
-
-       
     }
 
     async void cargaclientes()
     {
         carga.IsVisible = true;
 
-        var listAppoiments = new List<Appoiments>
-        {
-            new Appoiments {
-                CustomerName = "Pedro",
-                AsistantName = "Test" ,
-                DateTime = DateTime.Now ,
-                Address = "Calle 9, casa 4e",
-                Canton = "Santa Ana",
-                Province = "San Jose",
-                Description ="Grooming",
-                State = 1},
-            new Appoiments {
-                CustomerName = "Martin",
-                AsistantName = "Test",
-                DateTime = DateTime.Now ,
-                Address = "Calle 9, casa 4e",
-                Canton = "Santa Ana",
-                Province = "Cartago",
-                Description ="Checkeo anual",
-                State = 1}
-        };
+        var vetEmail = await SecureStorage.GetAsync("sesion");
+        var listAppoiments = await _serviceAppointment.ListAppointments(vetEmail);
         lvAppointments.ItemsSource = listAppoiments;
         carga.IsVisible = false;
     }
@@ -59,7 +41,7 @@ public partial class ClientesPage : ContentPage
 
         if (lvAppointments.SelectedItem is Appoiments appoiment)
         {
-            await Navigation.PushAsync(new CompletePage(appoiment));
+            await Navigation.PushAsync(new CompletePage(_serviceAppointment, appoiment));
         }
     }
     private async void OnReagendarClicked(object sender, EventArgs e)
@@ -68,7 +50,7 @@ public partial class ClientesPage : ContentPage
 
         if (lvAppointments.SelectedItem is Appoiments appoiment)
         {
-            await Navigation.PushAsync(new ReagendarPage(appoiment));
+            await Navigation.PushAsync(new ReagendarPage(_serviceAppointment, appoiment));
         }
     }
     private async void OnCancelarClicked(object sender, EventArgs e)
@@ -77,7 +59,7 @@ public partial class ClientesPage : ContentPage
 
         if (lvAppointments.SelectedItem is Appoiments appoiment)
         {
-            await Navigation.PushAsync(new CancelPage(appoiment));
+            await Navigation.PushAsync(new CancelPage(_serviceAppointment, appoiment));
         }
     }
 

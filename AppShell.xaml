@@ -12,10 +12,13 @@
     ContentTemplate="{DataTemplate vistas:CargaPage}"
     Route="carga" />
     
-    <ShellContent
+    <!--<ShellContent
      Title="Ingreso"
      ContentTemplate="{DataTemplate vistas:LoginPage}"
-     Route="LoginPage" />
+     Route="LoginPage" />-->
+    <ShellItem Route="LoginPage">
+        <ShellContent ContentTemplate="{DataTemplate vistas:LoginPage}"/>
+    </ShellItem>
 
     <!--Main Page-->
     <TabBar>
@@ -38,10 +41,10 @@
         
         <Tab Title="Salir" Icon="gear_fill.svg">
             <ShellContent
-        Icon="house_door_fill.svg"
-    Title="Salir"
-    ContentTemplate="{DataTemplate vistas:LogoutPage}"
-    Route="salir" />
+                 Icon="house_door_fill.svg"
+                Title="Salir"
+                ContentTemplate="{DataTemplate vistas:LogoutPage}"
+                Route="salir" />
         </Tab>
     </TabBar>
 

@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace MovilApp.IService
 {
-    interface IServiceUsers
+    public interface IServiceUsers
     {
-        public Task<Users> GetUsers();
-        public Task<ResponseVerify> Verify(string email, string password);
+        public Task<Users> GetUsers(string email);
+        public Task<ResponseVerify> Verify(LogIn logIn);
     }
 }

@@ -1,24 +1,32 @@
+using MovilApp.IService;
 using MovilApp.Models;
+using MovilApp.Servicios;
+
 namespace MovilApp.Vistas;
 
 public partial class ReagendarPage : ContentPage
 {
-    private readonly Appoiments appoiment;
-    public ReagendarPage(Appoiments appoiment)
-	{
-		InitializeComponent();
-        this.appoiment = appoiment;
+    private readonly Appoiments _appoiment;
+    private readonly IServiceAppointment _serviceAppointments;
+    public ReagendarPage(IServiceAppointment serviceAppointment, Appoiments appoiment)
+    {
+        InitializeComponent();
+        _serviceAppointments = serviceAppointment;
+        _appoiment = appoiment;
     }
 
     private async void OnEnviarClicked(object sender, EventArgs e)
     {
 
-        string mensaje = entryMensaje.Text;
+        const int completeId = 94;
 
-        await DisplayAlert("Mensaje Enviado", $"Mensaje: {mensaje}", "OK");
+        var appoinmentUpdate = new AppoinmentUpdate { Id = _appoiment.Id, Description = entryMensaje.Text, State = completeId };
 
-        appoiment.IsCompleted = true;
+        await _serviceAppointments.UpdateAppointment(appoinmentUpdate);
 
-        await Navigation.PopAsync();
+        await DisplayAlert("Solicitud dereagendar exitosa", "La cita se mandado a la lista de reagendar de forma correcta", "OK");
+
+        await Navigation.PushAsync(new ClientesPage(_serviceAppointments));
+        
     }
 }
